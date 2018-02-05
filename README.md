@@ -8,8 +8,8 @@ You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm)
-* [Bower](https://www.npmjs.com/package/bower)
-* [Gulp](https://www.npmjs.com/package/gulp-install)
+* [Bower](https://www.npmjs.com/package/bower) (npm install bower -g)
+* [Gulp](https://www.npmjs.com/package/gulp-install) (npm install gulp -g)
 * [Google Chrome](https://google.com/chrome/)
 
 ## Installation
@@ -18,7 +18,6 @@ You will need the following things properly installed on your computer.
 * `cd BVTest`
 * `npm install`
 * `bower install`
-* `gulp install`
 
 ## Running / Development
 

@@ -14,6 +14,9 @@ angular.module('BVTest')
       var newName = $scope.inputName;
       var newEmail = $scope.inputEmail;
       var newPassword = $scope.inputPassword;
+      $scope.data = { hide: false};
+      $scope.error= "User already Registered. Please try again";
+
       var user = { 'name': newName, 'email': newEmail, 'password': newPassword, 'reporte' : []};
       var storeEmail = localStorage.getItem(newEmail);
 
@@ -21,20 +24,18 @@ angular.module('BVTest')
         localStorage.setItem(newEmail,JSON.stringify(user));
         return true;
       }
-      else {
-        alert("Error: User already Registered");
-        return false;
-      }
+      else {throw $scope.error; }
     };
 
     $scope.submit = function() {
-      if ($scope.store()) {
-        $location.path('/dashboard');
-        return false;
+
+      try {
+          $scope.store();
+          $location.path('/dashboard');
+          return false;
       }
-      else {
-         $location.path('/login');
-         return false;
-       }
+      catch (e) {
+        $scope.data.hide = true;
+      }
     }
   });
