@@ -1,0 +1,6 @@
+{
+  "generator-yangular": {
+    "scriptsDir": "app/controllers/",
+    "viewsDir": "app/views/"
+  }
+}
