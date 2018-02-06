@@ -77,10 +77,12 @@ gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 gulp.task('connect', ['styles'], function() {
   var serveStatic = require('serve-static');
   var serveIndex = require('serve-index');
+  var cors = require('cors');
   var app = require('connect')()
     .use(require('connect-livereload')({port: 35729}))
     .use(serveStatic('.tmp'))
     .use(serveStatic('app'))
+
     // paths to bower_components should be relative to the current file
     // e.g. in app/index.html you should use ../bower_components
     .use('/bower_components', serveStatic('bower_components'))
@@ -92,6 +94,7 @@ gulp.task('connect', ['styles'], function() {
       console.log('Started connect web server on http://localhost:8000');
     });
 });
+
 
 gulp.task('serve', ['wiredep', 'connect', 'fonts', 'watch'], function() {
   if (argv.open) {

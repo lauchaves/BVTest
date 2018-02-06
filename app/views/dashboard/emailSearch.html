@@ -16,31 +16,18 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Welcome!</h1>
-				<h2>Enter an email:</h2><br /><br />
+				<h2>Enter an email:</h2><br />
+				<span ng-show="data.hide" class="label label-danger" ng-bind="error"></span>
 
 				<div class="box">
 				  <div class="container-1">
-						<form action='/email' id='search-form' method='get' target='_top'>
-				      <span class="icon"><i class="fa fa-search"></i></span>
-				      <input name="email" type="search" id="search" placeholder="Search..." type='submit' />
+						<!-- <form action='/email' id='search-form' method='get' target='_top'> -->
+						<form>
+				      <span class="icon"><i class="fa fa-search" ng-click="submit()"></i></span>
+				      <input ng-model="email" type="search" id="search" placeholder="Search..." />
 						</form>
 				  </div>
 				</div>
-
-<!--
-				<div id='search-box'>
-					<form action='/email' id='search-form' method='get' target='_top'>
-						<span class="icon"><i class="fa fa-search" type='submit'></i></span>
-						<input type="search" id="search" name='email' placeholder="Search..." />
-					</form>
-				</div>
-
-				<p>
-					<a ui-sref="login" class="btn btn-primary btn-lg btn-white">Logout</a>
-				</p>
-
-	-->
-
 
 			</div>
 		</div>
