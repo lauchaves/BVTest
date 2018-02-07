@@ -18,29 +18,29 @@ angular.module('BVTest')
       }
       else {
         //$http.get('https://www.beenverified.com/hk/dd/email?email='+$scope.email)
-
+/*
         $http.get('https://www.beenverified.com/hk/dd/email?email=skip.suva@gmail.com')
         .then(function (response){
           console.log(response);
         })
-/*
-        var url = "https://www.beenverified.com/hk/dd/email?email=skip.suva@gmail.com";
-        $http({
-            method: 'JSONP',
-            url: url
-        }).
-        success(function(status) {
-            console.log("asd "+status);
-        }).
-        error(function(status) {
-            //your code when fails
-        });
-        */
+      }
+      */
 
+      $http({
+            method: 'GET',
+            url:'https://www.beenverified.com/hk/dd/email?email=skip.suva@gmail.com',
+            data: '',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(
+            function(response) {
+                return response;
+            },
+            function(errResponse) {
+                console.error('Error !!');
+            })
       }
 
-
-      }
-
-
+    }
   });
