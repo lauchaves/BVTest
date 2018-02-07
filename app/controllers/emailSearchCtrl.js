@@ -17,20 +17,13 @@ angular.module('BVTest')
         throw $scope.error;
       }
       else {
-        //$http.get('https://www.beenverified.com/hk/dd/email?email='+$scope.email)
-/*
-        $http.get('https://www.beenverified.com/hk/dd/email?email=skip.suva@gmail.com')
-        .then(function (response){
-          console.log(response);
-        })
-      }
-      */
+
+      // Use this approach
       const proxyURL = "https://cors-anywhere.herokuapp.com/";
       const requestURL = "https://www.beenverified.com/hk/dd/email?email="+$scope.email;
       $.getJSON(proxyURL + requestURL, function(data) {
         console.log(data);
       })
-
 
 
 /*
@@ -51,19 +44,6 @@ angular.module('BVTest')
 
 */
 
-/*
-
-            const url =
-              "https://www.beenverified.com/hk/dd/email?email=laurens004@gmail.com";
-            axios
-              .get(url)
-              .then(response => {
-                console.log(response);
-              })
-              .catch(error => {
-                console.log(error);
-              });
-*/
       }
 
     }
