@@ -25,7 +25,15 @@ angular.module('BVTest')
         })
       }
       */
+      const proxyURL = "https://cors-anywhere.herokuapp.com/";
+      const requestURL = "https://www.beenverified.com/hk/dd/email?email="+$scope.email;
+      $.getJSON(proxyURL + requestURL, function(data) {
+        console.log(data);
+      })
 
+
+
+/*
       $http({
             method: 'GET',
             url:'https://www.beenverified.com/hk/dd/email?email=skip.suva@gmail.com',
@@ -40,6 +48,22 @@ angular.module('BVTest')
             function(errResponse) {
                 console.error('Error !!');
             })
+
+*/
+
+/*
+
+            const url =
+              "https://www.beenverified.com/hk/dd/email?email=laurens004@gmail.com";
+            axios
+              .get(url)
+              .then(response => {
+                console.log(response);
+              })
+              .catch(error => {
+                console.log(error);
+              });
+*/
       }
 
     }
