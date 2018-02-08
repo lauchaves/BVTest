@@ -22,31 +22,53 @@
 		</div>
 	</snap-content>
 	</div>
+
+<!--
 	<div class="container">
+		<div ng-repeat="item in reporte">{{item.search}}
+	<ul>
+		<li ng-repeat="i in item.social">{{i.type}}</li>
+	</ul>
+</div>
+-->
+<div class="container">
 		<div class="table-responsive">
+
 			<table class="table ">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>Firstname</th>
-						<th>Lastname</th>
-						<th>Email</th>
-						<th>Job</th>
+						<th>Search</th>
+						<th>Names</th>
+						<th>Usernames</th>
+						<th>Emails</th>
 						<th>Social</th>
+						<th>Jobs</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Anna</td>
-						<td>Pitt</td>
-						<td>anap@gmail.com</td>
-						<td>Journalist</td>
-						<td>link to facebook</td>
-					</tr>
-				</tbody>
+		      <tr ng-repeat="item in reporte">
+		        <td>{{item.search}}</td>
+		        <td ng-repeat-start="i in item.names">
+		          {{i.full}}</td>
+		        <td ng-repeat-end></td>
+						<td ng-repeat-start="i in item.usernames">
+							<br>{{i|json}}</td>
+						<td ng-repeat-end></td>
+						<td ng-repeat-start="i in item.emails">
+							{{i.email_address}}</td>
+						<td ng-repeat-end></td>
+						<td ng-repeat-start="i in item.social">
+							{{i.type}}</td>
+						<td ng-repeat-end></td>
+						<td ng-repeat-start="i in item.jobs">
+							{{i.jobs}}</td>
+						<td ng-repeat-end></td>
+
+		      </tr>
+		    </tbody>
 			</table>
 		</div>
+		<br />
 		<p>
 			<a class="btn btn-primary btn-lg btn-white" ui-sref="emailSearch">Back to Email Search</a>
 		</p>

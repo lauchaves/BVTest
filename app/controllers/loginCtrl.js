@@ -10,6 +10,10 @@
 
 angular.module('BVTest')
   .controller('LoginCtrl', function($scope, $location) {
+    var checkUser = localStorage.getItem("UserOnline");
+    if(checkUser != null || checkUser != undefined){
+      localStorage.removeItem("UserOnline");
+    }
     $scope.signupRoute = 'signup';
     $scope.data = { hide: false};
     $scope.error= "Login Failed. Please try again";
@@ -20,7 +24,10 @@ angular.module('BVTest')
         if(localStorage.getItem(email) != null || localStorage.getItem(email) != undefined ){
           var foundUser = JSON.parse(localStorage.getItem(email));
           var userPass = foundUser.password;
-          if(userPass === password) return true;
+          if(userPass === password){
+            localStorage.setItem("UserOnline",email);
+            return true;
+          }
           else { throw $scope.error; } //  "Error: Password is incorrect";
         }
         else{ throw  $scope.error; } //'Error: User not found';

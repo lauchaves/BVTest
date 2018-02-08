@@ -17,7 +17,7 @@
 			<div class="container">
 				<h1>Welcome!</h1>
 				<h2>Enter an email:</h2><br />
-				<span ng-show="data.hide" class="label label-danger" ng-bind="error"></span>
+				<span ng-show="searchBox.hide" class="label label-danger" ng-bind="error"></span>
 
 				<div class="box">
 				  <div class="container-1">
@@ -27,9 +27,49 @@
 				      <input ng-model="email" type="search" id="search" placeholder="Search..." />
 						</form>
 				  </div>
+
 				</div>
+			</div>
+			<div class="container">
+				<br />
+				<p ng-show="data.hide"><b>Names: </b> </p>
+				<ul ng-show="data.hide">
+					<li ng-repeat="opt in nameFound">
+						{{ opt.full}}
+					</li>
+				</ul>
+				<br />
+				<p ng-show="data.hide" style="display: inline-block"><b>Usernames: </b></p>
+				<ul ng-show="data.hide">
+					<li ng-repeat="opt in usernames">
+						{{ opt}}
+					</li>
+				</ul>
+				<br />
+				<p ng-show="data.hide"><b>Emails: </b></p>
+				<ul ng-show="data.hide">
+					<li ng-repeat="opt in emails">
+						{{ opt.email_address}}
+					</li>
+				</ul>
+				<br />
+				<p ng-show="data.hide"><b>Social Media: </b></p>
+				<ul ng-show="data.hide">
+					<li ng-repeat="opt in social">
+						<a style="text-transform: capitalize" href="{{ opt.url}}">{{ opt.type}}</a>
+					</li>
+				</ul>
+				<br />
+				<p ng-show="data.hide"><b>Jobs: </b></p>
+				<ul ng-show="data.hide">
+					<li ng-repeat="opt in jobs">
+						<b>{{ opt.title}}</b> at {{ opt.company}}
+					</li>
+				</ul>
 
 			</div>
+
 		</div>
+
 	</snap-content>
 </div>

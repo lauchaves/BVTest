@@ -22,6 +22,7 @@ angular.module('BVTest')
 
       if (storeEmail === null || storeEmail === undefined ){
         localStorage.setItem(newEmail,JSON.stringify(user));
+        localStorage.setItem("UserOnline",email);
         return true;
       }
       else {throw $scope.error; }

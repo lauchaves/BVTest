@@ -44,6 +44,15 @@ gulp.task('html', ['styles'], function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('import', function() {
+  return gulp.src('app/images/**/*')
+    // .pipe($.cache($.imagemin({
+    //   progressive: true,
+    //   interlaced: true
+    // })))
+    .pipe(gulp.dest('dist/images'));
+});
+
 gulp.task('images', function() {
   return gulp.src('app/images/**/*')
     // .pipe($.cache($.imagemin({
@@ -75,7 +84,6 @@ gulp.task('extras', function() {
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 gulp.task('connect', ['styles'], function() {
-  const axios = require("axios");
   var serveStatic = require('serve-static');
   var serveIndex = require('serve-index');
   var app = require('connect')()
