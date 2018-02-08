@@ -27,10 +27,11 @@
 				      <input ng-model="email" type="search" id="search" placeholder="Search..." />
 						</form>
 				  </div>
-
 				</div>
 			</div>
 			<div class="container">
+				<br />
+				<small ng-show="wait.hide">Please wait...</small>
 				<br />
 				<p ng-show="data.hide"><b>Names: </b> </p>
 				<ul ng-show="data.hide">

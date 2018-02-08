@@ -10,6 +10,10 @@
 
 angular.module('BVTest')
   .controller('LoginCtrl', function($scope, $location) {
+    $scope.isValidEmail= function(mail){
+        var regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+        return regexEmail.test(mail);
+    }
     var checkUser = localStorage.getItem("UserOnline");
     if(checkUser != null || checkUser != undefined){
       localStorage.removeItem("UserOnline");
@@ -21,16 +25,20 @@ angular.module('BVTest')
       var email = $scope.inputEmail;
       var password = $scope.inputPassword;
       if (email != "undefined" || email != "null" || password != "undefined" || password !="null") {
-        if(localStorage.getItem(email) != null || localStorage.getItem(email) != undefined ){
-          var foundUser = JSON.parse(localStorage.getItem(email));
-          var userPass = foundUser.password;
-          if(userPass === password){
-            localStorage.setItem("UserOnline",email);
-            return true;
+        if($scope.isValidEmail(email)){
+          if(localStorage.getItem(email) != null || localStorage.getItem(email) != undefined ){
+            var foundUser = JSON.parse(localStorage.getItem(email));
+            var userPass = foundUser.password;
+            if(userPass === password){
+              localStorage.setItem("UserOnline",email);
+              return true;
+            }
+            else { throw $scope.error; } //  "Error: Password is incorrect";
           }
-          else { throw $scope.error; } //  "Error: Password is incorrect";
+          else{ throw  $scope.error; } //'Error: User not found';
         }
-        else{ throw  $scope.error; } //'Error: User not found';
+        else { throw  $scope.error; }
+
       }
       else{ throw $scope.error; } // 'Error: username or password is incorrect'; }
     },
