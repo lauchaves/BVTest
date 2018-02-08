@@ -8,7 +8,6 @@
 				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
 			</span>
 		</a>
-
 		<div class="fr">
 		<h2>Reports</h2>
 		</div>
@@ -18,56 +17,53 @@
 				<h1>Latest Searches</h1>
 				<p>Here you can see your latest searches. </p>
 				<h2>Report: Email Search</h2>
-				<p>This table shows the information obtained from an email</p>
 		</div>
 	</snap-content>
 	</div>
-
-<!--
 	<div class="container">
-		<div ng-repeat="item in reporte">{{item.search}}
-	<ul>
-		<li ng-repeat="i in item.social">{{i.type}}</li>
-	</ul>
-</div>
--->
-<div class="container">
-		<div class="table-responsive">
+			<div class="table-responsive">
+				<table class="table ">
+					<thead>
+						<tr>
+							<th>Search</th>
+							<th>Names</th>
+							<th>Usernames</th>
+							<th>Emails</th>
+							<th>Social</th>
+							<th>Jobs</th>
+						</tr>
+					</thead>
+					<tbody>
+			      <tr ng-repeat="item in reporte">
+			        <td>{{item.search}}</td>
+			        <td>
+								<span ng-repeat="i in item.names">{{i.full}}<br></span>
+			         </td>
+							<td >
+								<span ng-repeat="i in item.usernames">{{i}}<br></span>
+							</td>
+							<td>
+								<span ng-repeat="i in item.emails">{{i.email_address}}<br></span>
+							</td>
+							<td>
 
-			<table class="table ">
-				<thead>
-					<tr>
-						<th>Search</th>
-						<th>Names</th>
-						<th>Usernames</th>
-						<th>Emails</th>
-						<th>Social</th>
-						<th>Jobs</th>
-					</tr>
-				</thead>
-				<tbody>
-		      <tr ng-repeat="item in reporte">
-		        <td>{{item.search}}</td>
-		        <td ng-repeat-start="i in item.names">
-		          {{i.full}}</td>
-		        <td ng-repeat-end></td>
-						<td ng-repeat-start="i in item.usernames">
-							<br>{{i|json}}</td>
-						<td ng-repeat-end></td>
-						<td ng-repeat-start="i in item.emails">
-							{{i.email_address}}</td>
-						<td ng-repeat-end></td>
-						<td ng-repeat-start="i in item.social">
-							{{i.type}}</td>
-						<td ng-repeat-end></td>
-						<td ng-repeat-start="i in item.jobs">
-							{{i.jobs}}</td>
-						<td ng-repeat-end></td>
 
-		      </tr>
-		    </tbody>
-			</table>
-		</div>
+									<span  ng-repeat="i in item.social">
+										<a style="text-transform: capitalize" href="{{ i.url}}"> {{ i.type}} </a>
+										<br>
+									</span>
+
+
+
+							</td>
+							<td>
+								<span ng-repeat="i in item.jobs">{{i.company}}<br></span>
+								</td>
+
+			      </tr>
+			    </tbody>
+				</table>
+			</div>
 		<br />
 		<p>
 			<a class="btn btn-primary btn-lg btn-white" ui-sref="emailSearch">Back to Email Search</a>

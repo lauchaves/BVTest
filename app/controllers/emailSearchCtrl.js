@@ -13,9 +13,6 @@ angular.module('BVTest')
     var useronline = localStorage.getItem("UserOnline");
     var userOnInfo = JSON.parse(localStorage.getItem(useronline));
     var newUserInfo = userOnInfo;
-    console.log(userOnInfo);
-    console.log("............");
-
 
     $scope.error="Please enter an email and try again.";
     $scope.searchBox = { hide: false};
@@ -34,7 +31,6 @@ angular.module('BVTest')
 
         axios.get(proxyURL + requestURL)
         .then(function(response) {
-          console.log(response);
           setTimeout(function () {
             $scope.$apply(function () {
 
